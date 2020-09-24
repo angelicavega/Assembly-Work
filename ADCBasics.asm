@@ -1,5 +1,4 @@
 ;--------------CODE IS UNFORMATTED AND NEEDS MODIFICATION--------------------;
-;CSC-240 Lab 10 B
 ; ADC Basics
 ; This program will show the basic functionality of the Analog-to-Digital Converter (ADC)
 ; using the "Wait for Conversion" method. The input should come from PB4, and the
