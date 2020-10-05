@@ -7,13 +7,11 @@
 ;
 start of code segment
 .def
-io_set
-= r16
+io_set  = r16
 ; used to set up the
 outputs on ports B and D
 .def
-workhorse
-= r17
+workhorse = r17
 ; multi-purpose
 register used to move bytes to/from ADCSRA and ADMUX
 .def
@@ -22,16 +20,13 @@ adc_value_low = r21
 low byte of the result of the ADC conversion
 .def
 adc_value_high = r22
-; used to manipulate the
-high byte of the result of the ADC conversion
-.org
-0x0000
+; used to manipulate the high byte of the result of the ADC conversion
+.org 0x0000
 ; begin
 storing program at location 0x0000
 rjmp
 setup
-; jump over
-all interrupt vectors
+; jump over all interrupt vectors
 .org
 0x0100
 ; begin
@@ -41,8 +36,7 @@ setup:
 ;
 ADD THE FOLLOWING FUNCTIONALITY HERE:
 ldi workhorse, 0b11111111
-;[1] set direction and control for all ports to
-be used
+;[1] set direction and control for all ports to be used
 sts PORTA_DIR, workhorse
 ldi workhorse, 0b00000111
 sts PORTB_DIR, workhorse
