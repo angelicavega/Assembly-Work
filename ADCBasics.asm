@@ -6,20 +6,20 @@
 .cseg
 ;
 start of code segment
-.def
-io_set  = r16
+    .def
+    io_set  =         r16
 ; used to set up the
 outputs on ports B and D
-.def
-workhorse = r17
+    .def
+    workhorse =       r17
 ; multi-purpose
-register used to move bytes to/from ADCSRA and ADMUX
-.def
-adc_value_low = r21
+;register used to move bytes to/from ADCSRA and ADMUX
+    .def
+    adc_value_low =   r21
 ; used to manipulate the
 low byte of the result of the ADC conversion
-.def
-adc_value_high = r22
+    .def
+    adc_value_high =  r22
 ; used to manipulate the high byte of the result of the ADC conversion
 .org 0x0000
 ; begin
@@ -27,37 +27,36 @@ storing program at location 0x0000
 rjmp
 setup
 ; jump over all interrupt vectors
-.org
-0x0100
+    .org
+    0x0100
 ; begin
 storing program at location 0x0100
 ; --------------------------------- setup ------------------------------------
 setup:
 ;
 ADD THE FOLLOWING FUNCTIONALITY HERE:
-ldi workhorse, 0b11111111
+      ldi workhorse,      0b11111111
 ;[1] set direction and control for all ports to be used
-sts PORTA_DIR, workhorse
-ldi workhorse, 0b00000111
-sts PORTB_DIR, workhorse
+      sts PORTA_DIR,      workhorse
+      ldi workhorse,      0b00000111
+      sts PORTB_DIR,      workhorse
 ;- PORT A[1..7] are output
 ;- PORT B[0..2] are output, PORT B[4] in the analog input, B[3.5..7] are ignored and set low.
 rcall display_all
 ; test routine to confirm wiring is correct
 ; ADD THE FOLLOWING FUNCTIONALITY HERE:
-ldi workhorse, 0b00000001
-sts ADC0_CTRLA , workhorse
+      ldi workhorse,      0b00000001
+      sts ADC0_CTRLA ,    workhorse
 ;[1] use workhorse to store values to set up ADC
 ;[2] set ADC ENABLE
 ;[3] set ADC Sample Accumulation Number to 0 with 1
 sample taken, which it already is
-ldi workhorse, 0b00010001
-sts ADC0_CTRLC,
-workhorse
+      ldi workhorse,      0b00010001
+      sts ADC0_CTRLC,     workhorse
 ;[4] set ADC Prescalar to 4
 ;[5] set voltage reference selection to VDD
-ldi workhorse,0b00001001
-sts ADC0_MUXPOS, workhorse
+      ldi workhorse,      0b00001001
+      sts ADC0_MUXPOS,    workhorse
 ;[6] set MUX to AIN9 reading PB4
 ; ---------------- loop sequence -----------------
 loop:
@@ -158,8 +157,8 @@ r21, r22, r25
 display_all:
 ;
 CLEAR DISPLAY AND FLASH
-ldi
-r25, 2
+      ldi
+      r25,      2
 display_all_flash:
 ldi
 r21, 0xFF
