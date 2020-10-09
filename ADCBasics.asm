@@ -61,17 +61,17 @@ sample taken, which it already is
 ; ---------------- loop sequence -----------------
 loop:
 ; ADD THE FOLLOWING FUNCTIONALITY HERE:
-ldi workhorse, 0b00000001
+      ldi workhorse,      0b00000001
 sts ADC0_COMMAND, workhorse
 rcall wait_adc
 ;[1] use workhorse to store values into ADC0_COMMAND
-by starting the conversion
+;by starting the conversion
 ;[2] check to see if the ADC conversion is done by:
 wait_adc:
-lds workhorse, ADC0_INTFLAGS
-andi workhorse, 0b00000001
+      lds workhorse,      ADC0_INTFLAGS
+      andi workhorse,     0b00000001
 cpi
-workhorse, 0b00000001
+      workhorse,          0b00000001
 breq show
 rjmp wait_adc
 ;- loading into workhorse the value of ADC0_INTFLAGS
