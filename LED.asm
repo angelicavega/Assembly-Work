@@ -2,14 +2,13 @@ int buttonState =     0;
 int fadeValue =       0;
 int delay1 =          0;
 void setup() {
-// put your setup code here, to run once:
 // initialize the LED pin as an output:
 pinMode(ledPin, OUTPUT);
 // initialize the pushbutton pin as an input:
 pinMode(buttonPin, INPUT_PULLUP);
 }
 void loop() {
-// put your main code here, to run repeatedly:
+// main code here, to run repeatedly:
 buttonState =         digitalRead(buttonPin);
 if (buttonState == HIGH) {
 // turn LED on:
