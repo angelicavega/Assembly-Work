@@ -8,7 +8,7 @@ pinMode(ledPin, OUTPUT);
 pinMode(buttonPin, INPUT_PULLUP);
 }
 void loop() {
-// main code here, to run repeatedly:
+// main code goes here, to run repeatedly:
 buttonState =         digitalRead(buttonPin);
 if (buttonState == HIGH) {
 // turn LED on:
