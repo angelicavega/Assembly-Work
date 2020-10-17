@@ -2,9 +2,9 @@ int buttonState =     0;
 int fadeValue =       0;
 int delay1 =          0;
 void setup() {
-// initialize the LED pin as an output:
+// start the LED pin as an output:
 pinMode(ledPin, OUTPUT);
-// initialize the pushbutton pin as an input:
+// start the pushbutton pin as an input:
 pinMode(buttonPin, INPUT_PULLUP);
 }
 void loop() {
