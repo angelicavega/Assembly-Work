@@ -11,7 +11,7 @@ void loop() {
 // main code goes here, to run repeatedly:
 buttonState =         digitalRead(buttonPin);
 if (buttonState == HIGH) {
-// turn LED on:
+; // turn LED on:
 digitalWrite(ledPin, HIGH); // fade in from min to max in increments of 5 points:
 for (int fadeValue =  0, fadeValue <= 255, fadeValue += 5) {
 // sets the value (range from 0 to 255):
