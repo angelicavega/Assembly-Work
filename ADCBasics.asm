@@ -62,7 +62,7 @@ sample taken, which it already is
 loop:
 ; ADD THE FOLLOWING FUNCTIONALITY HERE:
       ldi workhorse,      0b00000001
-sts ADC0_COMMAND, workhorse
+      sts ADC0_COMMAND,   workhorse
 rcall wait_adc
 ;[1] use workhorse to store values into ADC0_COMMAND
 ;by starting the conversion
@@ -81,8 +81,8 @@ rjmp wait_adc
 - if the flag is not set, keep waiting
 ; ADD THE FOLLOWING FUNCTIONALITY HERE:
 show:
-lds adc_value_low, ADC0_RES
-lds adc_value_high, ADC0_TEMP
+    lds adc_value_low,    ADC0_RES
+    lds adc_value_high,   ADC0_TEMP
 ;
 [1] load the ADCed values into general purpose registers:
 ;
