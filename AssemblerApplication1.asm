@@ -42,4 +42,4 @@ rjmp
 loop
 delay:
 nop
-re
+ret
