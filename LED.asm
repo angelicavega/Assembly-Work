@@ -1,6 +1,6 @@
-int buttonState =     0;
-int fadeValue =       0;
-int delay1 =          0;
+int buttonState   =     0;
+int fadeValue   =       0;
+int delay1   =          0;
 void setup() {
 ; // start the LED pin as an output:
 pinMode(ledPin, OUTPUT);
@@ -9,7 +9,7 @@ pinMode(buttonPin, INPUT_PULLUP);
 }
 void loop() {
 ; // start main code 
-buttonState =         digitalRead(buttonPin);
+buttonState =           digitalRead(buttonPin);
 if (buttonState == HIGH) {
 ; // turn LED on:
 digitalWrite(ledPin, HIGH); // fade in from min to max in increments of 5 points:
@@ -30,7 +30,7 @@ delay(20);
 else {
 ; // turn LED off:
 digitalWrite(ledPin, LOW);
-delay1 = (analogRead(sensorPin)/17);
+delay1 =              (analogRead(sensorPin)/17);
 ; // fade in from min to max in increments of 5 points:
 for (int fadeValue = 0, fadeValue <= 255, fadeValue += 5) {
 ; // sets the value (range from 0 to 255):
