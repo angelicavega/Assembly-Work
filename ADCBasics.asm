@@ -7,19 +7,19 @@
 ;
 start of code segment
     .def
-    io_set  =         r16
+    io_set  =             r16
 ; used to set up the
 outputs on ports B and D
     .def
-    workhorse =       r17
+    workhorse =           r17
 ; multi-purpose
 ;register used to move bytes to/from ADCSRA and ADMUX
     .def
-    adc_value_low =   r21
+    adc_value_low =       r21
 ; used to manipulate the
 low byte of the result of the ADC conversion
     .def
-    adc_value_high =  r22
+    adc_value_high =      r22
 ; used to manipulate the high byte of the result of the ADC conversion
 .org 0x0000
 ; begin
@@ -73,7 +73,7 @@ wait_adc:
 cpi
       workhorse,          0b00000001
 breq show
-rjmp wait_adc
+rjmp                      wait_adc
 ;- loading into workhorse the value of ADC0_INTFLAGS
 ;
 - testing against the interrupt flag (ADC0_RESRDY)
@@ -81,8 +81,8 @@ rjmp wait_adc
 - if the flag is not set, keep waiting
 ; ADD THE FOLLOWING FUNCTIONALITY HERE:
 show:
-    lds adc_value_low,    ADC0_RES
-    lds adc_value_high,   ADC0_TEMP
+     lds adc_value_low,   ADC0_RES
+     lds adc_value_high,  ADC0_TEMP
 ;
 [1] load the ADCed values into general purpose registers:
 ;
@@ -119,17 +119,17 @@ used to manipulate high order bits and display on PORTB
 ; ---------------------------------------------------------------------------------
 display_10:
 mov
-r23, r21
+r23,                        r21
 ;copy low byte into manipulation register
 lsl
 r23
 ;left shift once to place 7 low order bits correctly, lsb now 0.
 sts
-PORTA_OUT, r23 ;output value to PORTA
+PORTA_OUT,                 r23 ;output value to PORTA
 mov
-r24, r22;copy the high byte into manipulation register
+r24,                       r22;copy the high byte into manipulation register
 mov
-r23, r21
+r23,                       r21
 ;get a fresh copy of low byte
 rol
 r23
@@ -140,7 +140,7 @@ r24
 ;r24 now contains three high bits of ADC output in three low
 order bits
 sts
-PORTB_OUT, r24 ;output value to PORTB
+PORTB_OUT,                 r24 ;output value to PORTB
 ret
 ; ---------------------------------- display_all ----------------------------------
 ; Subroutine to check the display wiring. Uses display_10 subroutine.
@@ -161,17 +161,17 @@ CLEAR DISPLAY AND FLASH
       r25,      2
 display_all_flash:
 ldi
-r21, 0xFF
+r21,                    0xFF
 ldi
-r22, 0x03
+r22,                    0x03
 rcall
 display_10
 rcall
 delay_240ms
 ldi
-r21, 0x00
+r21,                    0x00
 ldi
-r22, 0x00
+r22,                    0x00
 rcall
 display_10
 rcall
